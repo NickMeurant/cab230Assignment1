@@ -48,7 +48,7 @@ function App() {
                 setLoggedin={setLoggedin} 
                 token={token}
                 setToken={setToken} />} />
-                <Route path="volcanolist" element={<IndividualVolcano
+                <Route path="volcanolist" element={<VolcanoList
                 loggedin={loggedin}
                 setLoggedin={setLoggedin} 
                 token={token}

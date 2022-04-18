@@ -60,3 +60,7 @@ input[type="submit"] {
   color: #fff;
   padding: 10px 20px;
 }
+
+select {
+  width:200px;
+}
