@@ -1,19 +1,13 @@
-export default function Login() {
-    return(
-        <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    )
+
+
+export default function Login(props) {
+  const loggedin = props.loggedin;
+  const token = props.token;
+  return (
+    // if logged in == true, log user out
+    // else promp sign in form
+    <div class="center">
+    <p> login form</p>
+    </div>
+  )
 }

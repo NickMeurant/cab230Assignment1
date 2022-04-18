@@ -26,3 +26,10 @@ a {
     color: #809fff;
   }
 }
+
+.center {
+  margin: auto;
+  width: 20%;
+  border: 5px solid #4a4a4a;
+  height: 500px;
+}
