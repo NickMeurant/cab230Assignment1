@@ -19,10 +19,11 @@ function App() {
   }, [])
 
   return (<div>
-    <div>
-      {<Header loggedin={loggedin}/>}
-    </div>
+
     <BrowserRouter>
+      <div>
+        {<Header loggedin={loggedin} />}
+      </div>
       <Routes>
         <Route path="/" element={<LandingPage Header={Header} />} />
         <Route path="login" element={<Login />} />
