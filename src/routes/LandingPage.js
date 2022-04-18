@@ -1,20 +1,17 @@
-function LandingPage() {
+import { useEffect } from "react";
+import volcano from "../assets/volcano.png";
+
+export default function LandingPage(props) {
+  const header = props.Header
+  useEffect(()=>{
+    console.log("landing page");
+  })
     return(
-        <div className="App">
-        <header className="App-header">
+      <div>
+        <div>
+        {header}
+        </div>
           <img src={volcano} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
       </div>
     )
 }
