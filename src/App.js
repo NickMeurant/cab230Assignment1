@@ -7,8 +7,9 @@ import volcano from './assets/volcano.png';
 import LandingPage from './routes/LandingPage';
 import VolcanoList from './routes/VolcanoList';
 import IndividualVolcano from './routes/IndividualVolcano';
-import Login from './routes/Login';
+import Register from './routes/Register';
 import Header from './components/Header';
+import Login from './routes/Login';
 
 
 function App() {
@@ -30,10 +31,28 @@ function App() {
             </div>
             <div>
               <Routes>
-                <Route path="/" element={<LandingPage Header={Header} />} />
-                <Route path="login" element={<Login token={token} loggedin={loggedin} />} />
-                <Route path="volcanolist" element={<VolcanoList />} />
-                <Route path="individualVolcano" element={<IndividualVolcano />} />
+                <Route path="/" element={<LandingPage 
+                loggedin={loggedin}
+                setLoggedin={setLoggedin}
+                token={token}
+                setToken={setToken}
+                />} />
+                <Route path="login" element={<Login
+                loggedin={loggedin}
+                setLoggedin={setLoggedin} 
+                token={token}
+                setToken={setToken}
+                 />} />
+                <Route path="register" element={<Register
+                loggedin={loggedin}
+                setLoggedin={setLoggedin} 
+                token={token}
+                setToken={setToken} />} />
+                <Route path="volcanolist" element={<IndividualVolcano
+                loggedin={loggedin}
+                setLoggedin={setLoggedin} 
+                token={token}
+                setToken={setToken} />} />
               </Routes>
             </div>
 

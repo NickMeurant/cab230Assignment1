@@ -8,14 +8,15 @@ export default function Header(props) {
     const handleClick = route => {
         navigate(route);
     }
+
     return (
         <div>
-            <AppBar position="static ">
+            <AppBar position= "static ">
                 <Toolbar>
                     <Button color="grey" variant="contained" onClick={() => handleClick("/")}>Home</Button>
                     <Button color="grey" variant="contained" onClick={() => handleClick("/volcanolist")}>VolcanoList</Button>
-                    <Button color="grey" variant="contained" onClick={() => handleClick("/individualVolcano")}>IndividualVolcano</Button>
-                    <Button color="grey" variant="contained" onClick={() => handleClick("/login")}>{props.loggedin ? "login" : "logout"}</Button>
+                    <Button color="grey" variant="contained" onClick={() => handleClick("/register")}>Register</Button>
+                    <Button color="grey" variant="contained" onClick={() => handleClick("/login")}>{props.loggedin ? "logout" : "login"}</Button>
                 </Toolbar>
             </AppBar>
         </div>

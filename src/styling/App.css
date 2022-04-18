@@ -33,3 +33,30 @@ a {
   border: 5px solid #4a4a4a;
   height: 500px;
 }
+
+.center-text {
+  margin: auto;
+  width: 30%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: grey;
+  border: 1px solid grey;
+  color: #fff;
+  padding: 10px 20px;
+}
