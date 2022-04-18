@@ -1,11 +1,21 @@
+import { useEffect, useState } from 'react';
 import logo from './assets/logo.svg';
 import './styling/App.css';
+import volcano from './assets/volcano.png';
+
 
 function App() {
+
+  const [logged,setLogged] = useState(false);
+
+  useEffect(()=>{ // 
+    console.log("use effect has started");
+  },[])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={volcano} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
