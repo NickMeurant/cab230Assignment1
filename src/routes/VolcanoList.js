@@ -20,8 +20,8 @@ export default function VolcanoList(props) {
 
   const [loading, setLoading] = useState(false);
 
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
-  const [distance, setDistance] = useState(distances[0]);
+  const [selectedCountry, setSelectedCountry] = useState();
+  const [distance, setDistance] = useState();
 
   const [volcanos, setVolcanos] = useState([]);
   const [volcanoInfo, setVolcanoInfo] = useState([]);
@@ -80,7 +80,7 @@ export default function VolcanoList(props) {
 
   const GetVolcanos = async () => {
     const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=Chile"
-      + "&populatedWithin=" + distance + "km";
+      + "&populatedWithin=" + "5km";
     await axios.get(url).then((res) => {
       setVolcanos(res.data);
     }).catch((error) => {
@@ -167,14 +167,14 @@ export default function VolcanoList(props) {
               onInput={onFilterTextBoxChanged}
             />
             <label>Select a country</label>
-            <select name="country" id="country" onChange={(e) => setSelectedCountry(e.target.value)}>
+            <select name="country" id="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
               {countries.map((data) =>
-                <option value={data}>{data}</option>)}
+                <option value={data} selected={data==selectedCountry ? true : false}>{data}</option>)}
             </select>
             <label>Select Distance</label>
             <select name="distance" id="distance" onChange={(e) => setDistance(e.target.value)}>
               {distances.map((data) =>
-                <option value={data}>{data}</option>)}
+                <option value={data} selected={data==distance ? true : false}>{data} </option>)}
             </select>
             <button type="submit">Search</button>
           </form>
