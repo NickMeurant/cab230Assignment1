@@ -19,11 +19,7 @@ export default function VolcanoList() {
 
   const [columnDefs] = useState([
     { headerName: "Country", field: 'country' },
-    {
-      headerName: "Name", field: 'name', getQuickFilterText: params => {
-        return params.value.name;
-      }
-    },
+    { headerName: "Name", field: 'name'},
     { headerName: "Region", field: 'region' },
     { headerName: "SubRegion", field: 'subregion' },
 
@@ -64,16 +60,7 @@ export default function VolcanoList() {
     );
   }, []);
 
-  const onPrintQuickFilterTexts = useCallback(() => {
-    gridRef.current.api.forEachNode(function (rowNode, index) {
-      console.log(
-        'Row ' +
-          index +
-          ' quick filter text is ' +
-          rowNode.quickFilterAggregateText
-      );
-    });
-  }, []);
+  
   return (
     <div id="myGrid" class="ag-theme-alpine-dark" style={{ height: "600px", width: "80%" }}>
       <div className="example-header">
