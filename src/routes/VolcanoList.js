@@ -7,7 +7,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 
 
 export default function VolcanoList() {
-  const distances = [5, 30, 100]
+  const distances = [5, 30, 100];
 
   const [countries, setCountries] = useState([]);
 
@@ -15,29 +15,31 @@ export default function VolcanoList() {
   const [distance, setDistance] = useState(distances[0]);
 
   const [volcanos, setVolcanos] = useState([]);
+
   const gridRef = useRef();
 
   const HandleButtonClick = (value) => {
-    const url = ""
+    const volcanoId = volcanos.filter(volcano => volcano.name == value)
+    console.log(volcanoId);
   }
 
-  const [columnDefs] = useState([
+  const columnDefs = [
     { headerName: "Country", field: 'country' },
     {
       headerName: "Name", field: 'name', cellRenderer: 
-      params => <Button color="grey" variant="contained" 
-      onClick={HandleButtonClick(params.value)}>
+      (params) => <Button color="grey" variant="contained" 
+      onClick={() => HandleButtonClick(params.value)}>
       {params.value}</Button>
     },
     { headerName: "Region", field: 'region' },
     { headerName: "SubRegion", field: 'subregion' },
-  ]);
+  ];
 
-  const GetCountires = async () => {
+  const GetCountries = async () => {
     const url = "http://sefdb02.qut.edu.au:3001/countries";
     await axios.get(url).then((res) => {
       // console.log(res.data);
-      return setCountries(res.data);
+      setCountries(res.data);
     }).catch((error) => {
       console.log(error);
     })
@@ -56,9 +58,8 @@ export default function VolcanoList() {
 
   useEffect(() => { // initial useEffect() called on page load
     console.log("Volcano UseEffect");
-    GetCountires().then(() => {
-      GetVolcanos();
-    })
+    GetCountries()
+    GetVolcanos();
   }, [])
 
   const handleSubmit = async (event) => {
