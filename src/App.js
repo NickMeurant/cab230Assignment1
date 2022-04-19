@@ -24,40 +24,46 @@ function App() {
 
   return (
     <div>
-        <ThemeProvider theme={darkTheme}>
-          <BrowserRouter>
-            <div>
-              {<Header loggedin={loggedin} />}
-            </div>
-            <div>
-              <Routes>
-                <Route path="/" element={<LandingPage 
+      <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+          <div>
+            {<Header loggedin={loggedin} />}
+          </div>
+          <div>
+            <Routes>
+              <Route path="/" element={<LandingPage
                 loggedin={loggedin}
                 setLoggedin={setLoggedin}
                 token={token}
                 setToken={setToken}
-                />} />
-                <Route path="login" element={<Login
+              />} />
+              <Route path="login" element={<Login
                 loggedin={loggedin}
-                setLoggedin={setLoggedin} 
+                setLoggedin={setLoggedin}
                 token={token}
                 setToken={setToken}
-                 />} />
-                <Route path="register" element={<Register
+              />} />
+              <Route path="register" element={<Register
                 loggedin={loggedin}
-                setLoggedin={setLoggedin} 
+                setLoggedin={setLoggedin}
                 token={token}
                 setToken={setToken} />} />
-                <Route path="volcanolist" element={<VolcanoList
+              <Route path="volcanolist" element={<VolcanoList
                 loggedin={loggedin}
-                setLoggedin={setLoggedin} 
+                setLoggedin={setLoggedin}
                 token={token}
                 setToken={setToken} />} />
-              </Routes>
-            </div>
+              <Route path="/individual" element={<IndividualVolcano
+                loggedin={loggedin}
+                setLoggedin={setLoggedin}
+                token={token}
+                setToken={setToken} />} />
+            </Routes>
 
-          </BrowserRouter>
-        </ThemeProvider>
+          </div>
+
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }

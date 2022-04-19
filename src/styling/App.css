@@ -39,6 +39,18 @@ a {
   width: 30%;
 }
 
+.left-third {
+  width: 33%;
+  height:50%;
+  float:left;
+}
+
+.left-twothirds {
+  width: 67%;
+  height:50%;
+  float:left;
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
