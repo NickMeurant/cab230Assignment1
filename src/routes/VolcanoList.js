@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { AgGridReact } from 'ag-grid-react';
+import { Button } from '@mui/material';
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-grid.css";
 
@@ -16,10 +17,18 @@ export default function VolcanoList() {
   const [volcanos, setVolcanos] = useState([]);
   const gridRef = useRef();
 
+  const HandleButtonClick = (value) => {
+    const url = ""
+  }
 
   const [columnDefs] = useState([
     { headerName: "Country", field: 'country' },
-    { headerName: "Name", field: 'name' },
+    {
+      headerName: "Name", field: 'name', cellRenderer: 
+      params => <Button color="grey" variant="contained" 
+      onClick={HandleButtonClick(params.value)}>
+      {params.value}</Button>
+    },
     { headerName: "Region", field: 'region' },
     { headerName: "SubRegion", field: 'subregion' },
   ]);
@@ -55,10 +64,10 @@ export default function VolcanoList() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + selectedCountry +
-      "&populatedWithin=" + distance+ "km";
-      await axios.get(url).then((res) => {
-        return setVolcanos(res.data);
-      })
+      "&populatedWithin=" + distance + "km";
+    await axios.get(url).then((res) => {
+      return setVolcanos(res.data);
+    })
   }
 
   const onFilterTextBoxChanged = useCallback(() => {
