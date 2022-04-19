@@ -205,7 +205,15 @@ export default function VolcanoList(props) {
     }
     else {
       return (
-        <p>user is not logged in</p>
+        <div>
+          <div className="left-third">
+            <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
+            {generateList()}
+          </div>
+          <div className="left-twothirds">
+            <p>div inside div</p>
+          </div>
+        </div>
       )
     }
   }
