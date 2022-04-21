@@ -24,7 +24,7 @@ export default function VolcanoList(props) {
   const [loading, setLoading] = useState(false);
 
   const [selectedCountry, setSelectedCountry] = useState();
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState(distances[0]);
 
   const [volcanos, setVolcanos] = useState([]);
   const [volcanoInfo, setVolcanoInfo] = useState([]);
@@ -211,7 +211,7 @@ export default function VolcanoList(props) {
             {generateList()}
           </div>
           <div className="left-twothirds">
-            <BarChart props={RetrivePopulation(volcanoInfo)}></BarChart>
+            <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
           </div>
         </div>
       )
