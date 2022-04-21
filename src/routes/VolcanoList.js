@@ -6,8 +6,11 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import { useNavigate } from "react-router-dom";
 import { getThemeProps } from "@mui/system";
+import Chart from 'chart.js/auto'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+
+import BarChart from "../components/Chart";
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -79,7 +82,7 @@ export default function VolcanoList(props) {
   }
 
   const GetVolcanos = async () => {
-    const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=Chile"
+    const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=Algeria"
       + "&populatedWithin=" + "5km";
     await axios.get(url).then((res) => {
       setVolcanos(res.data);
@@ -155,6 +158,16 @@ export default function VolcanoList(props) {
     )
   }
 
+  const RetrivePopulation = (data) => {
+    const dataArray = [];
+    dataArray.push(data.population_5km);
+    dataArray.push(data.population_10km);
+    dataArray.push(data.population_30km);
+    dataArray.push(data.population_100km);
+    console.log(dataArray);
+    return dataArray;
+  }
+
   if (!viewing) {
     return (
       <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "80%" }}>
@@ -198,7 +211,7 @@ export default function VolcanoList(props) {
             {generateList()}
           </div>
           <div className="left-twothirds">
-            <p>div inside div</p>
+            <BarChart props={RetrivePopulation(volcanoInfo)}></BarChart>
           </div>
         </div>
       )

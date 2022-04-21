@@ -1,0 +1,42 @@
+import { Bar } from "react-chartjs-2";
+
+export default function BarChart(props) {
+    const data = {
+        labels: ['5km', '10km', '30km',
+            '100km'],
+        datasets: [
+            {
+                label: 'Population',
+                backgroundColor: 'rgba(75,192,192,1)',
+                borderColor: 'rgba(0,0,0,1)',
+                borderWidth: 2,
+                data: props.props
+            }
+        ]
+    }
+
+    return (
+        <div>
+            <Bar
+                data={data}
+                options={{
+                    title: {
+                        display: true,
+                        text: 'Population Around Volcano',
+                        fontSize: 20,
+                    },
+                    legend: {
+                        display: true,
+                        position: 'right'
+                    },
+                    scales: {
+                        yAxes: {
+                            type: 'logarithmic',
+                            position: 'left', // `axis` is determined by the position as `'y'`
+                        }
+                    }
+                }}
+            />
+        </div>
+    );
+};
