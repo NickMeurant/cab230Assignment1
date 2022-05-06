@@ -11,6 +11,8 @@ body {
   color: #222;
   background: #fff;
   font: 100% system-ui;
+  height: 100%;
+  width: 100%;
 }
 a {
   color: #0033cc;
@@ -26,7 +28,11 @@ a {
     color: #809fff;
   }
 }
-
+body, html { height:100%; padding:0; margin:0;}
+.header{
+  width:100%;
+  height:10%;
+}
 .center {
   margin: auto;
   width: 20%;
@@ -37,18 +43,34 @@ a {
 .center-text {
   margin: auto;
   width: 30%;
+  height:100%;
 }
 
 .left-third {
+  position:relative;
+  padding-top:20px;
   width: 33%;
-  height:50%;
   float:left;
+  height:50%
 }
 
 .left-twothirds {
-  width: 67%;
+  position:relative;
+  padding-top:20px;
   height:50%;
+  width: 67%;
   float:left;
+}
+
+.bottom{
+  position:relative;
+  width: 100%;
+  height: 50%;
+}
+
+.volcanoDisplay{
+  height: 90%;
+  width: 100%;
 }
 
 .input-container {

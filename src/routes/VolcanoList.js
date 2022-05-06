@@ -9,6 +9,7 @@ import { getThemeProps } from "@mui/system";
 import Chart from 'chart.js/auto'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import { Map, Marker } from "pigeon-maps"
 
 import BarChart from "../components/Chart";
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -150,11 +151,20 @@ export default function VolcanoList(props) {
           />
         </ListItem>
         <ListItem>
-        <ListItemText
-          primary={"Elevation: " + volcanoInfo.elevation}
-        />
-      </ListItem>
+          <ListItemText
+            primary={"Elevation: " + volcanoInfo.elevation}
+          />
+        </ListItem>
       </List>
+    )
+  }
+
+  const GenerateMap = () => {
+    return (
+      <Map defaultCenter={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]} defaultZoom={11}>
+        <Marker width={50}
+          anchor={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]} />
+      </Map>
     )
   }
 
@@ -164,7 +174,6 @@ export default function VolcanoList(props) {
     dataArray.push(data.population_10km);
     dataArray.push(data.population_30km);
     dataArray.push(data.population_100km);
-    console.log(dataArray);
     return dataArray;
   }
 
@@ -182,12 +191,12 @@ export default function VolcanoList(props) {
             <label>Select a country</label>
             <select name="country" id="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
               {countries.map((data) =>
-                <option value={data} selected={data==selectedCountry ? true : false}>{data}</option>)}
+                <option value={data} selected={data == selectedCountry ? true : false}>{data}</option>)}
             </select>
             <label>Select Distance</label>
             <select name="distance" id="distance" onChange={(e) => setDistance(e.target.value)}>
               {distances.map((data) =>
-                <option value={data} selected={data==distance ? true : false}>{data} </option>)}
+                <option value={data} selected={data == distance ? true : false}>{data} </option>)}
             </select>
             <button type="submit">Search</button>
           </form>
@@ -205,12 +214,15 @@ export default function VolcanoList(props) {
   else {
     if (props.loggedin) {
       return (
-        <div>
+        <div className="volcanoDisplay">
           <div className="left-third">
             <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
             {generateList()}
           </div>
           <div className="left-twothirds">
+            {GenerateMap()}
+          </div>
+          <div className="bottom">
             <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
           </div>
         </div>

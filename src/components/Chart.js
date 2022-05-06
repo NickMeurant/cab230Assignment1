@@ -16,8 +16,7 @@ export default function BarChart(props) {
     }
 
     return (
-        <div>
-            <Bar
+        <Bar
                 data={data}
                 options={{
                     plugins: {
@@ -25,7 +24,8 @@ export default function BarChart(props) {
                             display: true,
                             text: 'Population Around Volcano',
                             fontSize: 20,
-                        }
+                        },
+                        maintainAspectRatio: false,
                     },
                     legend: {
                         display: true,
@@ -35,10 +35,10 @@ export default function BarChart(props) {
                         yAxes: {
                             type: 'logarithmic',
                             position: 'left', // `axis` is determined by the position as `'y'`
-                        }
+                        },
+                        
                     }
                 }}
-            />
-        </div>
+            />   
     );
 };

@@ -15,6 +15,8 @@ import Login from './routes/Login';
 function App() {
   const [loggedin, setLoggedin] = useState(false);
   const [token, setToken] = useState("");
+  const [distance, setDistance] = useState(null);
+  const [country, setCountry] = useState(null);
 
   const darkTheme = createTheme({
     palette: {
@@ -26,7 +28,7 @@ function App() {
     <div>
       <ThemeProvider theme={darkTheme}>
         <BrowserRouter>
-          <div>
+          <div className='header'>
             {<Header loggedin={loggedin} />}
           </div>
           <div>
@@ -49,6 +51,10 @@ function App() {
                 token={token}
                 setToken={setToken} />} />
               <Route path="volcanolist" element={<VolcanoList
+                country={country}
+                setCountry={setCountry}
+                distance={distance}
+                setDistance={setDistance}
                 loggedin={loggedin}
                 setLoggedin={setLoggedin}
                 token={token}
