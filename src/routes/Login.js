@@ -27,6 +27,7 @@ export default function Login(props) {
         await axios.post(url, {"email": email, "password": password}).then(res => {
             if(res.status == 200){
                 navigate("/");
+                localStorage.setItem("token",res.data.token);
                 props.setToken(res.data.token);
                 props.setLoggedin(true);
             }
@@ -43,6 +44,7 @@ export default function Login(props) {
         if(loggedin){
             props.setLoggedin(false);
             props.setToken("");
+            localStorage.clear("token");
             navigate("/");
         }
     },[])

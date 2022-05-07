@@ -18,6 +18,13 @@ function App() {
   const [distance, setDistance] = useState(null);
   const [country, setCountry] = useState(null);
 
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      setToken(localStorage.getItem("token"));
+      setLoggedin(true);
+    }
+  },[]);
+
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
