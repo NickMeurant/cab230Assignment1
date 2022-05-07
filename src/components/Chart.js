@@ -1,3 +1,4 @@
+import { height } from "@mui/system";
 import { Bar } from "react-chartjs-2";
 
 export default function BarChart(props) {
@@ -25,6 +26,7 @@ export default function BarChart(props) {
                             text: 'Population Around Volcano',
                             fontSize: 20,
                         },
+                        responsive:true,
                         maintainAspectRatio: false,
                     },
                     legend: {

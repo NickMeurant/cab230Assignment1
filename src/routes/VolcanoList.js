@@ -5,16 +5,19 @@ import { Button } from '@mui/material';
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import { useNavigate } from "react-router-dom";
-import { getThemeProps } from "@mui/system";
+import { Box, getThemeProps, height } from "@mui/system";
 import Chart from 'chart.js/auto'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { Map, Marker } from "pigeon-maps"
+import { sizing } from '@mui/system';
+import { stamenToner } from 'pigeon-maps/providers'
 
 import BarChart from "../components/Chart";
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { green, red } from "@mui/material/colors";
 
 
 export default function VolcanoList(props) {
@@ -161,9 +164,13 @@ export default function VolcanoList(props) {
 
   const GenerateMap = () => {
     return (
-      <Map defaultCenter={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]} defaultZoom={11}>
+      <Map height={500} 
+      defaultCenter={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]} 
+      defaultZoom={11}>
         <Marker width={50}
-          anchor={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]} />
+          color={`hsl(0deg 100% 50%)`}
+          anchor={[parseInt(volcanoInfo.latitude), parseInt(volcanoInfo.longitude)]}
+          onClick={() => <div><p>{volcanoInfo.name}</p></div>} />
       </Map>
     )
   }
@@ -215,15 +222,21 @@ export default function VolcanoList(props) {
     if (props.loggedin) {
       return (
         <div className="volcanoDisplay">
-          <div className="left-third">
-            <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
-            {generateList()}
-          </div>
-          <div className="left-twothirds">
-            {GenerateMap()}
+          <div className="firstHalf">
+            <div className="left-third">
+              <Box sx={{ height: "100%" }}>
+                <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
+                {generateList()}
+              </Box>
+            </div>
+            <div className="left-twothirds">
+                {GenerateMap()}
+            </div>
           </div>
           <div className="bottom">
-            <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
+          <div className="chart">
+          <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
+          </div>
           </div>
         </div>
       )
