@@ -21,7 +21,6 @@ export default function Register(props) {
     event.preventDefault();
     const url = "http://sefdb02.qut.edu.au:3001/user/register";
     await axios.post(url,{"email":email,"password":password}).then((res) =>{
-      console.log(res);
     }).catch((error)=>{
       alert("User Already Exists");
     })
@@ -31,7 +30,7 @@ export default function Register(props) {
     // if logged in == true, log user out
     // else promp sign in form
     <div className="center">
-    <div className="center-text">Register</div>
+    <div className="center-text">Register
      <form onSubmit={handleSubmit}>
        <div className="input-container">
          <label>Username </label>
@@ -47,6 +46,7 @@ export default function Register(props) {
          <button type="submit">Register</button>
        </div>
      </form>
+     </div>
    </div>
   )
 }

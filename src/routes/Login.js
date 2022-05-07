@@ -35,9 +35,8 @@ export default function Login(props) {
                 alert("Username or password incorrect");
             }
         }).catch((error)=>{
-            console.log(error);
+            alert("Username or password incorrect");
         })
-        console.log(token);
     }
 
     useEffect(()=>{
@@ -53,7 +52,7 @@ export default function Login(props) {
         // if logged in == true, log user out
         // else promp sign in form
         <div className="center">
-            <div className="center-text">Login</div>
+            <div className="center-text">Login
             <form onSubmit={handleSubmit}>
                 <div className="input-container">
                     <label>Email</label>
@@ -69,6 +68,7 @@ export default function Login(props) {
                     <button type="submit">Login</button>
                 </div>
             </form>
+            </div>
         </div>
     )
 }
