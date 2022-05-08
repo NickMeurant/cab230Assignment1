@@ -18,29 +18,29 @@ export default function BarChart(props) {
 
     return (
         <Bar
-                data={data}
-                options={{
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Population Around Volcano',
-                            fontSize: 20,
-                        },
-                        responsive:true,
-                        maintainAspectRatio: false,
-                    },
-                    legend: {
+            data={data}
+            options={{
+                plugins: {
+                    title: {
                         display: true,
-                        position: 'right'
+                        text: 'Population Around Volcano',
+                        fontSize: 20,
                     },
-                    scales: {
-                        yAxes: {
-                            type: 'logarithmic',
-                            position: 'left', // `axis` is determined by the position as `'y'`
-                        },
-                        
-                    }
-                }}
-            />   
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+                legend: {
+                    display: true,
+                    position: 'right'
+                },
+                scales: {
+                    yAxes: {
+                        type: 'logarithmic',
+                        position: 'left', // `axis` is determined by the position as `'y'`
+                    },
+
+                }
+            }}
+        />
     );
 };
