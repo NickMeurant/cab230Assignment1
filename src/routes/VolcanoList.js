@@ -72,6 +72,7 @@ export default function VolcanoList(props) {
         countries={countries}
         volcanos={volcanos}
         setVolcanos={setVolcanos}
+        loggedin = {props.loggedin}
         token={props.token}
         setViewing={setViewing}
         volcanoInfo={volcanoInfo}
