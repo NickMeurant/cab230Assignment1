@@ -20,8 +20,6 @@ export default function VolcanoList(props) {
 
   const [countries, setCountries] = useState([]);
 
-  const [loading, setLoading] = useState(false);
-
   const [selectedCountry, setSelectedCountry] = useState();
   const [distance, setDistance] = useState(distances[0]);
 
@@ -31,27 +29,6 @@ export default function VolcanoList(props) {
   const [viewing, setViewing] = useState(false);
 
   const navigate = useNavigate();
-
-  const HandleButtonClick = async (value) => {
-    const volcanoId = volcanos.filter(volcano => volcano.name == value);
-    const url = "http://sefdb02.qut.edu.au:3001/volcano/" + volcanoId[0].id;
-
-    if (props.loggedin) {
-      await axios.get(url, {
-        headers: {
-          'Authorization': "Bearer " + props.token
-        }
-      }).then((res) => {
-        setVolcanoInfo(res.data);
-      })
-    }
-    else {
-      await axios.get(url).then((res) => {
-        setVolcanoInfo(res.data);
-      })
-    }
-    setViewing(true);
-  }
 
   useEffect(() => {
     console.log(volcanoInfo);
@@ -77,7 +54,6 @@ export default function VolcanoList(props) {
   }
 
   useEffect(() => { // initial useEffect() called on page load
-    console.log("Volcano UseEffect");
     GetCountries()
     GetVolcanos();
   }, [])
@@ -89,56 +65,56 @@ export default function VolcanoList(props) {
   if (!viewing) {
     return (
       <Table
-      setDistance={ setDistance }
-      distance = { distance }
-      setSelectedCountry ={setSelectedCountry}
-      selectedCountry = {selectedCountry}
-      countries = {countries}
-      volcanos = {volcanos}
-      setVolcanos = {setVolcanos}
-      token = {props.token}
-      setViewing = {setViewing}
-      volcanoInfo = {volcanoInfo}
-      setVolcanoInfo = {setVolcanoInfo}
+        setDistance={setDistance}
+        distance={distance}
+        setSelectedCountry={setSelectedCountry}
+        selectedCountry={selectedCountry}
+        countries={countries}
+        volcanos={volcanos}
+        setVolcanos={setVolcanos}
+        token={props.token}
+        setViewing={setViewing}
+        volcanoInfo={volcanoInfo}
+        setVolcanoInfo={setVolcanoInfo}
       ></Table >
     )
   }
   else {
-  if (props.loggedin) {
-    return (
-      <div className="volcanoDisplay">
-        <div className="firstHalf">
+    if (props.loggedin) {
+      return (
+        <div className="volcanoDisplay">
+          <div className="firstHalf">
+            <div className="left-third">
+              <Box sx={{ height: "100%" }}>
+                <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
+                {generateList(volcanoInfo)}
+              </Box>
+            </div>
+            <div className="left-twothirds">
+              {GenerateMap(volcanoInfo)}
+            </div>
+          </div>
+          <div className="bottom">
+            <div className="chart">
+              <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
+            </div>
+          </div>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="volcanoDisplay">
           <div className="left-third">
-            <Box sx={{ height: "100%" }}>
-              <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
-              {generateList(volcanoInfo)}
-            </Box>
+            <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
+            {generateList(volcanoInfo)}
           </div>
           <div className="left-twothirds">
-            {GenerateMap(volcanoInfo)}
-          </div>
+          {GenerateMap(volcanoInfo)}
         </div>
-        <div className="bottom">
-          <div className="chart">
-            <BarChart data={RetrivePopulation(volcanoInfo)}></BarChart>
-          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
-  else {
-    return (
-      <div>
-        <div className="left-third">
-          <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
-          {generateList()}
-        </div>
-        <div className="left-twothirds">
-          <p>div inside div</p>
-        </div>
-      </div>
-    )
-  }
-}
 
 }

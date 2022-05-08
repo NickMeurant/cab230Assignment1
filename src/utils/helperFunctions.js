@@ -7,11 +7,11 @@ import ListItemText from '@mui/material/ListItemText';
 export const GenerateMap = (props) => {
     return (
         <Map height={500}
-            defaultCenter={[parseInt(props.latitude), parseInt(props.longitude)]}
+            defaultCenter={[parseFloat(props.latitude), parseFloat(props.longitude)]}
             defaultZoom={11}>
             <Marker width={50}
                 color={`hsl(0deg 100% 50%)`}
-                anchor={[parseInt(props.latitude), parseInt(props.longitude)]}
+                anchor={[parseFloat(props.latitude), parseFloat(props.longitude)]}
                 onClick={() => <div><p>{props.name}</p></div>} />
         </Map>
     )
