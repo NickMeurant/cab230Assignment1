@@ -53,7 +53,8 @@ export default function Table(props) {
   }
 
   return (
-    <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "80%" }}>
+    <div className="center-div">
+    <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "100%" }}>
       <div className="example-header">
         <form onSubmit={handleSubmit}>
           <input
@@ -85,5 +86,7 @@ export default function Table(props) {
         onRowClicked={(row) => HandleButtonClick(row)}>
       </AgGridReact>
     </div>
+    </div>
+    
   )
 }

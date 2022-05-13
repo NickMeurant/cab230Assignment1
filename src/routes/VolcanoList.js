@@ -8,8 +8,8 @@ import { Box, getThemeProps, height } from "@mui/system";
 
 import Table from "../components/Table";
 
-import { GenerateMap } from "../utils/helperFunctions";
-import { generateList } from "../utils/helperFunctions";
+import { GenerateMap } from "../components/Map";
+import { generateList } from "../components/GenerateList";
 import { RetrivePopulation } from "../utils/helperFunctions";
 
 import BarChart from "../components/Chart";
@@ -27,8 +27,6 @@ export default function VolcanoList(props) {
   const [volcanoInfo, setVolcanoInfo] = useState([]);
 
   const [viewing, setViewing] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(volcanoInfo);
