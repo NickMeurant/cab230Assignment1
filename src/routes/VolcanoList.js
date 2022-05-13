@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useCallback, useMemo, useRef, useState, useEffect } from "react";
+import {useState, useEffect } from "react";
 import { Button } from '@mui/material';
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-grid.css";
-import { useNavigate } from "react-router-dom";
-import { Box, getThemeProps, height } from "@mui/system";
+import { Box} from "@mui/system";
 
 import Table from "../components/Table";
 
@@ -75,7 +74,7 @@ export default function VolcanoList(props) {
         setViewing={setViewing}
         volcanoInfo={volcanoInfo}
         setVolcanoInfo={setVolcanoInfo}
-      ></Table >
+      ></Table>
     )
   }
   else {
