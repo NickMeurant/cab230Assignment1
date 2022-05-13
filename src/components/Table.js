@@ -8,6 +8,7 @@ export default function Table(props) {
 
   const distances = [5, 30, 100];
   const handleSubmit = async (event) => {
+    console.log("submission");
     event.preventDefault();
     const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + props.selectedCountry +
       "&populatedWithin=" + props.distance + "km";
@@ -23,19 +24,15 @@ export default function Table(props) {
   }, []);
 
   const columnDefs = [
-    {
-      headerName: "Name", field: 'name', cellRenderer:
-        (params) => <Button color="grey" variant="contained"
-          onClick={() => HandleButtonClick(params.value)}>
-          {params.value}</Button>
-    },
+    { headerName: "Name", field: 'name'},
     { headerName: "Country", field: 'country' },
     { headerName: "Region", field: 'region' },
     { headerName: "SubRegion", field: 'subregion' },
   ];
 
   const HandleButtonClick = async (value) => {
-    const volcanoId = props.volcanos.filter(volcano => volcano.name == value);
+    console.log(value);
+    const volcanoId = props.volcanos.filter(volcano => volcano.name == value.data.name);
     const url = "http://sefdb02.qut.edu.au:3001/volcano/" + volcanoId[0].id;
 
     if (props.loggedin) {
@@ -82,8 +79,10 @@ export default function Table(props) {
         rowData={props.volcanos}
         columnDefs={columnDefs}
         pagination={true}
+        paginationPageSize={10}
         ref={gridRef}
-        cacheQuickFilter={true}>
+        cacheQuickFilter={true}
+        onRowClicked={(row) => HandleButtonClick(row)}>
       </AgGridReact>
     </div>
   )
