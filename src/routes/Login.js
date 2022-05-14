@@ -26,16 +26,19 @@ export default function Login(props) {
         
         await axios.post(url, {"email": email, "password": password}).then(res => {
             if(res.status == 200){
-                navigate("/");
-                localStorage.setItem("token",res.data.token);
+                const currentDate = new Date();
+                const tokenInfo = {token: res.data.token,expire:currentDate.getTime() + res.data.expires_in * 1000} // sets timeout 86400 secs ahead of current time
+                localStorage.setItem("token",JSON.stringify(tokenInfo));
                 props.setToken(res.data.token);
                 props.setLoggedin(true);
+                navigate("/");
             }
             else{
                 alert("Username or password incorrect");
             }
         }).catch((error)=>{
             alert("Username or password incorrect");
+            console.log(error);
         })
     }
 

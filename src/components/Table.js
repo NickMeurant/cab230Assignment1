@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { AgGridReact } from 'ag-grid-react';
+import { TokenValid } from "../utils/helperFunctions";
 import axios from "axios";
 
 export default function Table(props) {
@@ -32,7 +33,7 @@ export default function Table(props) {
     const volcanoId = props.volcanos.filter(volcano => volcano.name == value.data.name);
     const url = "http://sefdb02.qut.edu.au:3001/volcano/" + volcanoId[0].id;
 
-    if (props.loggedin) {
+    if (props.loggedin && TokenValid()) {
       await axios.get(url, {
         headers: {
           'Authorization': "Bearer " + props.token

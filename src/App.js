@@ -10,6 +10,7 @@ import IndividualVolcano from './routes/IndividualVolcano';
 import Register from './routes/Register';
 import Header from './components/Header';
 import Login from './routes/Login';
+import {TokenValid} from './utils/helperFunctions';
 
 
 function App() {
@@ -20,8 +21,18 @@ function App() {
 
   useEffect(() => {
     if(localStorage.getItem("token")){
-      setToken(localStorage.getItem("token"));
-      setLoggedin(true);
+      const currentDate = new Date();
+      const token = JSON.parse(localStorage.getItem("token"));
+      if(!TokenValid()){
+        alert("Token expired, please login to renew token");
+        localStorage.clear("token");
+        setToken("");
+        setLoggedin(false);
+      }
+      else{
+        setToken(token.token);
+        setLoggedin(true);
+      }
     }
   },[]);
 
