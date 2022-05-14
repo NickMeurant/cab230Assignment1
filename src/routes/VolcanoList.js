@@ -27,16 +27,12 @@ export default function VolcanoList(props) {
 
   const [viewing, setViewing] = useState(false);
 
-  useEffect(() => {
-    console.log(volcanoInfo);
-  }, [volcanoInfo]);
-
   const GetCountries = async () => {
     const url = "http://sefdb02.qut.edu.au:3001/countries";
     await axios.get(url).then((res) => {
       setCountries(res.data);
     }).catch((error) => {
-      console.log(error);
+      console.log("Something has gone wrong " + error);
     })
   }
 
