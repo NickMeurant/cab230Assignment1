@@ -1,7 +1,10 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import { TokenValid } from "../utils/helperFunctions";
+import IconButton from '@mui/material/IconButton';
+
 import axios from "axios";
+import { Button} from "@mui/material";
 
 export default function Table(props) {
   const gridRef = useRef();
@@ -71,7 +74,7 @@ export default function Table(props) {
               {distances.map((data) =>
                 <option value={data} selected={data == props.distance ? true : false}>{data} </option>)}
             </select>
-            <button type="submit">Search</button>
+            <Button variant="contained" color="grey" type="submit">Search</Button>
           </form>
         </div>
         <AgGridReact

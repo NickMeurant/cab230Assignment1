@@ -1,4 +1,4 @@
-import { Button, FlatButton, ButtonBase, SubmitButton, alertTitleClasses  } from '@mui/material';
+import {FlatButton, ButtonBase, Button} from '@mui/material';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -51,7 +51,7 @@ export default function Register(props) {
          {renderErrorMessage("pass")}
        </div>
        <div className="button-container">
-         <button type="submit">Register</button>
+         <Button color="grey" variant="contained" type="submit">Register</Button>
        </div>
      </form>
      </div>

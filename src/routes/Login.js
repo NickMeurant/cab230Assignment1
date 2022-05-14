@@ -1,7 +1,7 @@
-import { Button, FlatButton, ButtonBase, SubmitButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { Button } from "@mui/material";
 
 export default function Login(props) {
     const loggedin = props.loggedin;
@@ -68,7 +68,7 @@ export default function Login(props) {
                     {renderErrorMessage("pass")}
                 </div>
                 <div className="button-container">
-                    <button type="submit">Login</button>
+                    <Button variant="contained" color="grey" type="submit">Login</Button>
                 </div>
             </form>
             </div>

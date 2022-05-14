@@ -7,7 +7,7 @@ export default function Header(props) {
 
     return (
         <div>
-            <AppBar position= "static ">
+            <AppBar position= "static">
                 <Toolbar>
                     <Button color="grey" variant="contained" onClick={() => navigate("/")}>Home</Button>
                     <Button color="grey" variant="contained" onClick={() => navigate("/volcanolist")}>VolcanoList</Button>
