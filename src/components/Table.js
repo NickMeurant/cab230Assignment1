@@ -22,7 +22,7 @@ export default function Table(props) {
   }, []);
 
   const columnDefs = [
-    { headerName: "Name", field: 'name'},
+    { headerName: "Name", field: 'name' },
     { headerName: "Country", field: 'country' },
     { headerName: "Region", field: 'region' },
     { headerName: "SubRegion", field: 'subregion' },
@@ -51,39 +51,38 @@ export default function Table(props) {
 
   return (
     <div className="center-div">
-    <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "100%" }}>
-      <div className="example-header">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="filter-text-box"
-            placeholder="Filter..."
-            onInput={onFilterTextBoxChanged}
-          />
-          <label>Select a country</label>
-          <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
-            {props.countries.map((data) =>
-              <option value={data} selected={data == props.selectedCountry ? true : false}>{data}</option>)}
-          </select>
-          <label>Select Distance</label>
-          <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
-            {distances.map((data) =>
-              <option value={data} selected={data == props.distance ? true : false}>{data} </option>)}
-          </select>
-          <button type="submit">Search</button>
-        </form>
+      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "100%" }}>
+        <div className="example-header">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="filter-text-box"
+              placeholder="Filter..."
+              onInput={onFilterTextBoxChanged}
+            />
+            <label>Select a country</label>
+            <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
+              {props.countries.map((data) =>
+                <option value={data} selected={data == props.selectedCountry ? true : false}>{data}</option>)}
+            </select>
+            <label>Select Distance</label>
+            <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
+              {distances.map((data) =>
+                <option value={data} selected={data == props.distance ? true : false}>{data} </option>)}
+            </select>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <AgGridReact
+          rowData={props.volcanos}
+          columnDefs={columnDefs}
+          pagination={true}
+          paginationPageSize={10}
+          ref={gridRef}
+          cacheQuickFilter={true}
+          onRowClicked={(row) => HandleButtonClick(row)}>
+        </AgGridReact>
       </div>
-      <AgGridReact
-        rowData={props.volcanos}
-        columnDefs={columnDefs}
-        pagination={true}
-        paginationPageSize={10}
-        ref={gridRef}
-        cacheQuickFilter={true}
-        onRowClicked={(row) => HandleButtonClick(row)}>
-      </AgGridReact>
     </div>
-    </div>
-    
   )
 }
