@@ -1,16 +1,17 @@
-import { Button, FlatButton, ButtonBase, SubmitButton  } from '@mui/material';
+import { Button, FlatButton, ButtonBase, SubmitButton, alertTitleClasses  } from '@mui/material';
 import axios from 'axios';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register(props) {
-  const loggedin = props.loggedin;
-  const token = props.token;
 
   const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [registered,setRegistered] = useState(false);
+
+  const navigate = useNavigate();
 
   const renderErrorMessage = (name) =>
   name === errorMessages.name && (
@@ -20,11 +21,18 @@ export default function Register(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const url = "http://sefdb02.qut.edu.au:3001/user/register";
-    await axios.post(url,{"email":email,"password":password}).then((res) =>{
-    }).catch((error)=>{
+    try{
+      const res = await axios.post(url,{email:email,password:password});
+      alert("User Created Successfully");
+      navigate("/");
+    }catch(error){
       alert("User Already Exists");
-    })
+    }
   }
+
+  useEffect(()=>{
+
+  },[registered])
 
   return (
     // if logged in == true, log user out
