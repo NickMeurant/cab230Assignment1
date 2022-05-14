@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import volcano from "../assets/volcano.jpg";
 import { Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";

@@ -28,28 +28,25 @@ export default function VolcanoList(props) {
   const [viewing, setViewing] = useState(false);
 
   const GetCountries = async () => {
-    const url = "http://sefdb02.qut.edu.au:3001/countries";
-    await axios.get(url).then((res) => {
-      setCountries(res.data);
-    }).catch((error) => {
-      console.log("Something has gone wrong " + error);
-    })
+    let url = "http://sefdb02.qut.edu.au:3001/countries";
+    let response = await axios.get(url);
+    setCountries(response.data);
   }
 
   const GetVolcanos = async () => {
-    const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=Algeria"
-      + "&populatedWithin=" + "5km";
-    await axios.get(url).then((res) => {
-      setVolcanos(res.data);
-    }).catch((error) => {
-      console.log(error);
-    })
+    const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + countries[0]
+    + "&populatedWithin=5km";
+    const response = await axios.get(url);
+    setVolcanos(response.data);
   }
-
+  
   useEffect(() => { // initial useEffect() called on page load
-    GetCountries()
-    GetVolcanos();
+    GetCountries();
   }, [])
+
+  useEffect(() =>{
+    GetVolcanos();
+  }, [countries])
 
   const handleBackPress = () => {
     setViewing(false);
