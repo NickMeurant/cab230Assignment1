@@ -18,6 +18,7 @@ export default function VolcanoList(props) {
   const distances = [5, 30, 100];
 
   const [countries, setCountries] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const [selectedCountry, setSelectedCountry] = useState();
   const [distance, setDistance] = useState(distances[0]);
@@ -33,13 +34,13 @@ export default function VolcanoList(props) {
       let response = await axios.get(url);
       setCountries(response.data);
       setSelectedCountry(response.data[0]);
+      setLoaded(true);
     }catch(error){
       console.log("Something went wrong " + error);
     }
   }
 
   const GetVolcanos = async () => {
-    if(!countries[0]) return;
     try{
       const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + countries[0]
       + "&populatedWithin=5km";
@@ -56,7 +57,9 @@ export default function VolcanoList(props) {
   }, [])
 
   useEffect(() =>{
-    GetVolcanos();
+    if(loaded){
+      GetVolcanos();
+    }
   }, [countries])
 
   const handleBackPress = () => {
