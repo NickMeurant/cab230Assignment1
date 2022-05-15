@@ -36,10 +36,10 @@ export default function VolcanoList(props) {
     }catch(error){
       console.log("Something went wrong " + error);
     }
-
   }
 
   const GetVolcanos = async () => {
+    if(!countries[0]) return;
     try{
       const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + countries[0]
       + "&populatedWithin=5km";
