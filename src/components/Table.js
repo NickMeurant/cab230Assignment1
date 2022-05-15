@@ -67,12 +67,12 @@ export default function Table(props) {
             <label>Select a country</label>
             <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
               {props.countries.map((data) =>
-                <option value={data} selected={data == props.selectedCountry ? true : false}>{data}</option>)}
+                <option key = {data} value={data} defaultValue={data == props.selectedCountry ? true : false}>{data}</option>)}
             </select>
             <label>Select Distance</label>
             <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
               {distances.map((data) =>
-                <option value={data} selected={data == props.distance ? true : false}>{data} </option>)}
+                <option key={data} value={data} defaultValue={data == props.distance ? true : false}>{data} </option>)}
             </select>
             <Button variant="contained" color="grey" type="submit">Search</Button>
           </form>
