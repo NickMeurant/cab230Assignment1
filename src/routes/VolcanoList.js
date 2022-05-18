@@ -10,9 +10,9 @@ import Table from "../components/Table";
 import { GenerateMap } from "../components/Map";
 import { generateList } from "../components/GenerateList";
 import { RetrivePopulation } from "../utils/helperFunctions";
+import {customTheme} from "../utils/defines";
 
 import BarChart from "../components/Chart";
-
 
 export default function VolcanoList(props) {
   const distances = [5, 30, 100];
@@ -91,7 +91,7 @@ export default function VolcanoList(props) {
           <div className="firstHalf">
             <div className="left-third">
               <Box sx={{ height: "100%" }}>
-                <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
+                <Button theme={customTheme} variant="contained" onClick={() => handleBackPress()}>Back</Button>
                 {generateList(volcanoInfo)}
               </Box>
             </div>

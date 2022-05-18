@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 
 import axios from "axios";
 import { Button} from "@mui/material";
+import {customTheme} from "../utils/defines"
 
 export default function Table(props) {
   const gridRef = useRef();
@@ -55,8 +56,8 @@ export default function Table(props) {
 
   return (
     <div className="center-div">
-      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "100%" }}>
-        <div className="example-header">
+      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "1000px" }}>
+        <div className="content">
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -74,7 +75,7 @@ export default function Table(props) {
               {distances.map((data) =>
                 <option key={data} value={data} defaultValue={data == props.distance ? true : false}>{data} </option>)}
             </select>
-            <Button variant="contained" color="grey" type="submit">Search</Button>
+            <Button variant="contained" theme={customTheme} type="submit">Search</Button>
           </form>
         </div>
         <AgGridReact
