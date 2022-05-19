@@ -13,14 +13,13 @@ export default function LandingPage(props) {
       </div>
       <div className="center-div">
         <p className="title">
-          Welcome To Your One-Stop Volcano Info Shop
+          Volcanoes of the World
         </p>
       </div>
       <div className="center-div">
         <img id="volcano" src={volcano} className="App-logo" alt="logo" />
       </div>
       <div>
-      
       </div>
       <div className="center-div">
         <Box textAlign="center">
