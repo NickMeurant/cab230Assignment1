@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './styling/App.css';
-import volcano from './assets/volcano.png';
 import LandingPage from './routes/LandingPage';
 import VolcanoList from './routes/VolcanoList';
-import IndividualVolcano from './routes/IndividualVolcano';
 import Register from './routes/Register';
 import Header from './components/Header';
 import Login from './routes/Login';
@@ -77,15 +75,8 @@ function App() {
                 setLoggedin={setLoggedin}
                 token={token}
                 setToken={setToken} />} />
-              <Route path="/individual" element={<IndividualVolcano
-                loggedin={loggedin}
-                setLoggedin={setLoggedin}
-                token={token}
-                setToken={setToken} />} />
             </Routes>
-
           </div>
-
         </BrowserRouter>
       </ThemeProvider>
     </div>
