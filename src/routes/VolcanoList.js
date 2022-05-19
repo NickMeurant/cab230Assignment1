@@ -18,7 +18,7 @@ export default function VolcanoList(props) {
   const distances = [5, 30, 100];
 
   const [countries, setCountries] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+
 
   const [selectedCountry, setSelectedCountry] = useState();
   const [distance, setDistance] = useState(distances[0]);
@@ -27,6 +27,8 @@ export default function VolcanoList(props) {
   const [volcanoInfo, setVolcanoInfo] = useState([]);
 
   const [viewing, setViewing] = useState(false);
+
+  const [loaded, setLoaded] = useState(false);
 
   const GetCountries = async () => {
     try {
