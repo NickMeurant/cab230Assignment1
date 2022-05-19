@@ -10,7 +10,8 @@ export default function Header(props) {
             <AppBar position= "static">
                 <Toolbar>
                     <Button color="grey" variant="contained" onClick={() => navigate("/")}>Home</Button>
-                    <Button color="grey" variant="contained" onClick={() => window.location.pathname == "/volcanolist" ? window.location.reload() : navigate("/volcanolist") }>VolcanoList</Button>
+                    <Button color="grey" variant="contained" onClick={() => window.location.pathname == "/volcanolist" ? 
+                    window.location.reload() : navigate("/volcanolist") }>VolcanoList</Button>
                     <Button color="grey" variant="contained" onClick={() => navigate("/register")}>Register</Button>
                     <Button color="grey" variant="contained" onClick={() => navigate("/login")}>{props.loggedin ? "logout" : "login"}</Button>
                 </Toolbar>
