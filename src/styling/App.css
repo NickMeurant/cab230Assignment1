@@ -128,8 +128,18 @@ select {
 .content {
   display: flex;
   justify-content: space-between;
-  max-width: 2000px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 10px 0;
-  margin: 10px;
+}
+
+#parent > *{
+  width: 1000px;
+  justify-content: space-between;
+  margin: 10px 0;
+  display: flex;
+}
+
+.size-20{
+  font-size:20px;
 }

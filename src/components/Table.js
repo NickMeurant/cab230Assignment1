@@ -4,8 +4,8 @@ import { TokenValid } from "../utils/helperFunctions";
 import IconButton from '@mui/material/IconButton';
 
 import axios from "axios";
-import { Button} from "@mui/material";
-import {customTheme} from "../utils/defines"
+import { Button } from "@mui/material";
+import { customTheme } from "../utils/defines"
 
 export default function Table(props) {
   const gridRef = useRef();
@@ -27,10 +27,10 @@ export default function Table(props) {
   }, []);
 
   const columnDefs = [
-    { headerName: "Name", field: 'name' },
-    { headerName: "Country", field: 'country' },
-    { headerName: "Region", field: 'region' },
-    { headerName: "SubRegion", field: 'subregion' },
+    { headerName: "Name", field: 'name', width: 300},
+    { headerName: "Country", field: 'country', width: 100},
+    { headerName: "Region", field: 'region', width: 300},
+    { headerName: "SubRegion", field: 'subregion', width: 300},
   ];
 
   const HandleButtonClick = async (value) => {
@@ -56,8 +56,8 @@ export default function Table(props) {
 
   return (
     <div className="center-div">
-      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "525px", width: "900px" }}>
-        <div className="content">
+      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "525px", width: "1015px" }}>
+        <div id="parent">
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -65,17 +65,17 @@ export default function Table(props) {
               placeholder="Filter..."
               onInput={onFilterTextBoxChanged}
             />
-            <label>Select a country</label>
-            <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
-              {props.countries.map((data) =>
-                <option key = {data} value={data} defaultValue={data == props.selectedCountry ? true : false}>{data}</option>)}
-            </select>
-            <label>Select Distance</label>
-            <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
-              {distances.map((data) =>
-                <option key={data} value={data} defaultValue={data == props.distance ? true : false}>{data} </option>)}
-            </select>
-            <Button variant="contained" theme={customTheme} type="submit">Search</Button>
+              <label class="size-20">Select a country</label>
+              <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
+                {props.countries.map((data) =>
+                  <option key={data} value={data} defaultValue={data == props.selectedCountry ? true : false}>{data}</option>)}
+              </select>
+              <label class="size-20">Select Distance</label>
+              <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
+                {distances.map((data) =>
+                  <option key={data} value={data} defaultValue={data == props.distance ? true : false}>{data} </option>)}
+              </select>
+              <Button variant="contained" theme={customTheme} type="submit">Search</Button>
           </form>
         </div>
         <AgGridReact
