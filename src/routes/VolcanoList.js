@@ -51,7 +51,6 @@ export default function VolcanoList(props) {
     } catch (error) {
       console.log("Something went wrong " + error);
     }
-
   }
 
   useEffect(() => { // initial useEffect() called on page load

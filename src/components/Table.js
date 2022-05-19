@@ -5,9 +5,11 @@ import { TokenValid } from "../utils/helperFunctions";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { customTheme } from "../utils/defines"
+import { useNavigate } from "react-router-dom";
 
 export default function Table(props) {
   const gridRef = useRef();
+  const navigate = useNavigate();
 
   const distances = [5, 30, 100];
   const handleSubmit = async (event) => {
