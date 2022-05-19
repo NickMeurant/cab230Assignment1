@@ -21,7 +21,7 @@ export default function BarChart(props) {
         <Bar
             data={data}
             width={"1000px"}
-            height={"510px"}
+            height={"350px"}
             options={{
                 plugins: {
                     title: {
