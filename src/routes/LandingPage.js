@@ -2,6 +2,7 @@ import volcano from "../assets/volcano.jpg";
 import { Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
+import { customTheme } from "../utils/defines";
 
 export default function LandingPage(props) {
   const header = props.Header
@@ -23,7 +24,7 @@ export default function LandingPage(props) {
       </div>
       <div className="center-div">
         <Box textAlign="center">
-          <Button color="grey" variant="contained" onClick={() => navigate("/volcanolist")}>Start Your Volcano Journey</Button>
+          <Button theme={customTheme} variant="contained" onClick={() => navigate("/volcanolist")}>Start Exploring</Button>
         </Box>
       </div>
     </div>
