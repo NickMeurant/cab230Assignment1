@@ -64,12 +64,12 @@ export default function Table(props) {
               placeholder="Filter..."
               onInput={onFilterTextBoxChanged}
             />
-              <label class="size-20">Select a country</label>
+              <label className="size-20">Select a country</label>
               <select name="country" id="country" value={props.selectedCountry} onChange={(e) => props.setSelectedCountry(e.target.value)}>
                 {props.countries.map((data) =>
                   <option key={data} value={data} defaultValue={data == props.selectedCountry ? true : false}>{data}</option>)}
               </select>
-              <label class="size-20">Select Distance</label>
+              <label className="size-20">Select Distance</label>
               <select name="distance" id="distance" onChange={(e) => props.setDistance(e.target.value)}>
                 {distances.map((data) =>
                   <option key={data} value={data} defaultValue={data == props.distance ? true : false}>{data} </option>)}
