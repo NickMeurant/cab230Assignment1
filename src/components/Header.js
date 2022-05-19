@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header(props) {
     const navigate = useNavigate();
-    console.log(window.location.pathname);
     return (
         <div>
             <AppBar position= "static">
