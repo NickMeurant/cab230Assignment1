@@ -56,7 +56,7 @@ export default function Table(props) {
 
   return (
     <div className="center-div">
-      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "600px", width: "1000px" }}>
+      <div id="myGrid" className="ag-theme-alpine-dark" style={{ height: "525px", width: "900px" }}>
         <div className="content">
           <form onSubmit={handleSubmit}>
             <input

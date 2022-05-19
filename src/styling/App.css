@@ -63,16 +63,16 @@ p.title{
 
 
 .left-third {
-  display: inline-block;
+  display: flex;
   float: left;
   padding-top:20px;
-  width: 33%;
+  width: 20%;
 }
 
 .left-twothirds {
   display: inline-block;
   padding-top:20px;
-  width: 60%;
+  width: 80%;
 }
 
 .bottom{

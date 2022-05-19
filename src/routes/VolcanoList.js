@@ -1,16 +1,16 @@
 import axios from "axios";
-import {useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from '@mui/material';
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-grid.css";
-import { Box} from "@mui/system";
+import { Box } from "@mui/system";
 
 import Table from "../components/Table";
 
 import { GenerateMap } from "../components/Map";
 import { generateList } from "../components/GenerateList";
 import { RetrivePopulation } from "../utils/helperFunctions";
-import {customTheme} from "../utils/defines";
+import { customTheme } from "../utils/defines";
 
 import BarChart from "../components/Chart";
 
@@ -29,24 +29,24 @@ export default function VolcanoList(props) {
   const [viewing, setViewing] = useState(false);
 
   const GetCountries = async () => {
-    try{
+    try {
       let url = "http://sefdb02.qut.edu.au:3001/countries";
       let response = await axios.get(url);
       setCountries(response.data);
       setSelectedCountry(response.data[0]);
       setLoaded(true);
-    }catch(error){
+    } catch (error) {
       console.log("Something went wrong " + error);
     }
   }
 
   const GetVolcanos = async () => {
-    try{
+    try {
       const url = "http://sefdb02.qut.edu.au:3001/volcanoes?country=" + countries[0]
-      + "&populatedWithin=5km";
+        + "&populatedWithin=5km";
       const response = await axios.get(url);
       setVolcanos(response.data);
-    }catch(error){
+    } catch (error) {
       console.log("Something went wrong " + error);
     }
 
@@ -56,8 +56,8 @@ export default function VolcanoList(props) {
     GetCountries();
   }, [])
 
-  useEffect(() =>{
-    if(loaded){
+  useEffect(() => {
+    if (loaded) {
       GetVolcanos();
     }
   }, [countries])
@@ -76,7 +76,7 @@ export default function VolcanoList(props) {
         countries={countries}
         volcanos={volcanos}
         setVolcanos={setVolcanos}
-        loggedin = {props.loggedin}
+        loggedin={props.loggedin}
         token={props.token}
         setViewing={setViewing}
         volcanoInfo={volcanoInfo}
@@ -96,7 +96,7 @@ export default function VolcanoList(props) {
               </Box>
             </div>
             <div className="left-twothirds">
-              {GenerateMap(volcanoInfo)}
+              {GenerateMap(volcanoInfo, props.loggedin)}
             </div>
           </div>
           <div className="bottom">
@@ -110,16 +110,19 @@ export default function VolcanoList(props) {
     else {
       return (
         <div className="volcanoDisplay">
-          <div className="left-third">
-            <Button color="grey" variant="contained" onClick={() => handleBackPress()}>Back</Button>
-            {generateList(volcanoInfo)}
+          <div className="firstHalf">
+            <div className="left-third">
+              <Box sx={{ height: "100%" }}>
+                <Button theme={customTheme} variant="contained" onClick={() => handleBackPress()}>Back</Button>
+                {generateList(volcanoInfo)}
+              </Box>
+            </div>
+            <div>
+              {GenerateMap(volcanoInfo, props.loggedin)}
+            </div>
           </div>
-          <div className="left-twothirds">
-          {GenerateMap(volcanoInfo)}
-        </div>
         </div>
       )
     }
   }
-
 }
