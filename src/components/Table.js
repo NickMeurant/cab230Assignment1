@@ -80,6 +80,7 @@ export default function Table(props) {
           </form>
         </div>
         <AgGridReact
+          overlayNoRowsTemplate="<span>It appears this country does not contain any volcanoes within the selected distance</span>"
           rowData={props.volcanos}
           columnDefs={columnDefs}
           pagination={true}
