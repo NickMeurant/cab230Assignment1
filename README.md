@@ -2,7 +2,7 @@
 
 This is a basic frontend that was written in React.  The purpose of this application was to leverage an internal API provided by QUT which contained various information about volcanos.  This application used React-Router to provide routing through the application, users could optionally create an account within the application to give themselves access to extra volcano information.
 
-**Note this application will no longer work because the internal API is no longer supported
+This application will no longer work because the internal API is no longer supported
 
 # Getting Started with Create React App
 
